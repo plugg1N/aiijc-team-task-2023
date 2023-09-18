@@ -147,6 +147,7 @@ ___
 
 
 $$ \Large X \text std  = \frac {X - X\text min} {Xmax - Xmin} $$
+
 $$ \Large Xscaled = Xstd * ( Xmax - Xmin ) + Xmin $$
 
 <br />
