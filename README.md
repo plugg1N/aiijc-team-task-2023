@@ -1,7 +1,5 @@
 # AIIJC Solution 2023
 
-___
-
 - *Написано*: Жамков Никита Д.
 - tg: https://t.me/jeberkarawita
 - GitHub: https://github.com/plugg1N/
@@ -17,7 +15,7 @@ ___
 3. Рефакторинг
 4. Подбор и файн-тюн модели **до безумия**
 
-![[Pasted image 20230918221411.png]]
+![](https://github.com/plugg1N/aiijc-team-task-2023/blob/main/Images/excalidraw.png?raw=true)
 ___
 
 # Какое там задание?
@@ -40,13 +38,13 @@ ___
 
 Загружаем .csv файл и начинаем смотреть на данные факторы и объекты
 
-![[Pasted image 20230918222940.png]]
+![](https://github.com/plugg1N/aiijc-team-task-2023/blob/main/Images/data1.png?raw=true)
 
 Можно заметить, что у нас ОЧЕНЬ много колонок (факторов). Скорее всего, многие из них - **нас не интересуют**
 
 Давайте взглянем на разницу между значениями 1 и 0 в *y* факторе, который мы пытаемся предсказать, чтобы не портить метрику, которая нас интересует: **F1-score**
 
-![[Pasted image 20230918223255.png]]
+![](https://github.com/plugg1N/aiijc-team-task-2023/blob/main/Images/big_bars.png?raw=true)
 
 Разница безумная. Если начать обучение модели с такой разностью в классах, то наша модель станет `biased`, то есть она будет привязана к единому мнению о том, что *нули* попадаются чаще, чем единицы, и будет, в большинстве случаев, отдавать предпочтение именно одному классу, что испортит `Recall`, и **F1-score** впоследствии
 
@@ -63,7 +61,7 @@ $$ \Large F_1 \text -Score = 2 * \frac {\text precision * recall} {\text precisi
 После того, как мы рассмотрели данные, нам стоит понять, какие факторы убрать из расчета
 
 - Посмотрим на [корреляцию](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.corr.html) других факторов и y:
-![[Pasted image 20230918224454.png]]
+![](https://github.com/plugg1N/aiijc-team-task-2023/blob/main/Images/corr1.png?raw=true)
 
 > *Мы можем заметить, что многие факторы практически никакой роли не играют. Даже можно сказать, что все факторы влияют на искомый **y** не больше, чем на `12%` каждый!*
 
@@ -86,7 +84,7 @@ ___
 
 Убрав сам *y* из списка индексов для корреляции, у нас получился следующий список факторов, играющий хорошую роль в предсказании значения *y*:
 
-![[Pasted image 20230918225318.png]]
+![](https://github.com/plugg1N/aiijc-team-task-2023/blob/main/Images/end_corr.png?raw=true)
 
 Потом мы быстренько убираем `Na` значения из списка наших объектов:
 ```python
@@ -123,7 +121,7 @@ ___
 
 > *Мы применили **ADASYN** к нашему Датафрейму, как теперь обстоят дела с данными?*
 
-![[Pasted image 20230918231425.png]]
+![](https://github.com/plugg1N/aiijc-team-task-2023/blob/main/Images/adasyn.png?raw=true)
 
 - Можно заметить, что теперь, вместо разницы:
 $$ \text ClassDist_1= \frac {32337} {192663} = 0.1678... $$ 
@@ -136,7 +134,7 @@ ___
 
 Делим наш *X* и *y* на под-выборки **train** и местный **test**. Почему местный тест? Потому что на самом деле - это под-выборка **val**, но так как мы знаем, что происходит на самом деле, то мы можем воспользоваться привычным нам вариантом и назвать под-выборку **test**
 
-![[Pasted image 20230918232522.png]]
+![](https://github.com/plugg1N/aiijc-team-task-2023/blob/main/Images/big_bars2.png?raw=true)
 
 ___
 
@@ -152,7 +150,7 @@ $$ \Large Xscaled = Xstd * ( Xmax - Xmin ) + Xmin $$
 
 - Данные получаются в таком формате: 
 
-![[Pasted image 20230918232949.png]]
+![](https://github.com/plugg1N/aiijc-team-task-2023/blob/main/Images/scaled.png?raw=true)
 
 <br />
 
