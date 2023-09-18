@@ -50,7 +50,11 @@ ___
 
 > *Очень важно будет дополнить недостающий класс синтетическими значениями, при помощи ADASYN. Значимость дисбаланса в классах можно заметить, проанализировав формулы метрик*
 
+<br />
+
 $$ \Large F_1 \text -Score = 2 * \frac {\text precision * recall} {\text precision + recall} = \frac {TP} {TP + \frac {1} {2} (FP + FN)} $$
+
+<br />
  
 Можно заметить, что `recall` играет важную роль в расчете $F_1 \text-Score$, так как `recall` находится в числителе, умножается на два и на `precision`. Если он будет слишком маленьким, то хуже станет абсолютно весь $F_1 \text-Score$
 
@@ -99,7 +103,7 @@ X_y = X_y.dropna()
 
 Проблема с дисбалансом классов - осталась. Поэтому, давайте это исправим, используя [ADASYN](https://imbalanced-learn.org/stable/references/generated/imblearn.over_sampling.ADASYN.html).
 
-- **ADASYN** - это улучшенная версия *oversampling*-овой техники [SMOTE](https://imbalanced-learn.org/stable/references/generated/imblearn.over_sampling.SMOTE.html) Обе эти техники позволяют убрать дисбаланс между двумя классами, посредством наполнения класса меньшинства синтетическими данными. Эти данные создаются опираясь на n-ближайших соседей к каждому фактору
+- **ADASYN** - это улучшенная версия *oversampling*-овой техники [SMOTE](https://imbalanced-learn.org/stable/references/generated/imblearn.over_sampling.SMOTE.html) Обе эти техники позволяют убрать дисбаланс между двумя классами, посредством наполнения класса меньшинства синтетическими данными. Эти данные создаются, опираясь на n-ближайших соседей к каждому фактору
 
 ___
 
