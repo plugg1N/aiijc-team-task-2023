@@ -52,7 +52,7 @@ ___
 
 > *Очень важно будет дополнить недостающий класс синтетическими значениями, при помощи ADASYN. Значимость дисбаланса в классах можно заметить, проанализировав формулы метрик*
 
-$$ F_1 \text -Score = 2 * \frac {\text precision * recall} {\text precision + recall} = \frac {TP} {TP + \frac {1} {2} (FP + FN)} $$
+$$ \Large F_1 \text -Score = 2 * \frac {\text precision * recall} {\text precision + recall} = \frac {TP} {TP + \frac {1} {2} (FP + FN)} $$
  
 Можно заметить, что `recall` играет важную роль в расчете $F_1 \text-Score$, так как `recall` находится в числителе, умножается на два и на `precision`. Если он будет слишком маленьким, то хуже станет абсолютно весь $F_1 \text-Score$
 
@@ -145,8 +145,8 @@ ___
 <br />
 
 
-$$ X \text std  = \frac {X - X\text min} {Xmax - Xmin} $$
-$$ Xscaled = Xstd * ( Xmax - Xmin ) + Xmin $$
+$$ \Large X \text std  = \frac {X - X\text min} {Xmax - Xmin} $$
+$$ \Large Xscaled = Xstd * ( Xmax - Xmin ) + Xmin $$
 
 <br />
 
